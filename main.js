@@ -9,7 +9,7 @@ function getData() {
     console.log(xhr.response);
     for (const loop in xhr.response) {
       const $newLi = document.createElement('li');
-      $newLi.textContent = xhr.response[loop].name;
+      $newLi.textContent = xhr.response[loop];
       $userList.append($newLi);
     }
   });
