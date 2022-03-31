@@ -7,11 +7,9 @@ function getData() {
   xhr.addEventListener('load', function () {
     console.log(xhr.status);
     console.log(xhr.response);
-    for (const loop in xhr.response) {
-      const $newLi = document.createElement('li');
-      $newLi.textContent = xhr.response[loop];
-      $userList.append($newLi);
-    }
+    const $newLi = Object.entries(xhr.response.students);
+    console.log('Results:', $newLi)
+    $userList.append(...$newLi);
   });
   xhr.send();
 }
