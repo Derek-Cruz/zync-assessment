@@ -48,11 +48,11 @@ function renderList(list) {
   $p3.setAttribute('class', 'p-student-listing');
   $p3.textContent = list.skill;
   $p4.setAttribute('class', 'p-student-listing');
-  const average = (grades) => grades.reduce((a, b) => a + b) / grades.length;
-  $p4.textContent = list.average;
-  console.log('test:', $p4)
-  console.log('test 2:', average)
-  console.log('test 3:', list.grades)
+  const average = list.grades.reduce((a, b) => a + b) / list.grades.length;
+
+  $p4.textContent = average;
+  console.log('test:', average)
+  console.log('test 2:', list.grades.length)
 
   $li.appendChild($div);
   $div.appendChild($img);
