@@ -7,10 +7,10 @@ function getData() {
   xhr.addEventListener('load', function () {
     console.log(xhr.status);
     console.log(xhr.response);
-    for (let students in xhr.response) {
-      const $test = renderList(xhr.response.students);
-      $userList.append($test);
-      console.log('res:', xhr.response.students)
+    for (var i = 0; i < xhr.response.students.length; i++) {
+      const $test = renderList(xhr.response.students[i]);
+      $userList.appendChild($test);
+      // console.log('res:', xhr.response.students[i])
     }
   });
   xhr.send();
@@ -31,12 +31,12 @@ function renderList(list) {
   $li.setAttribute('class', 'student-display-li');
   $div.setAttribute('class', 'student-display-div');
 
-  // $img.setAttribute('class', 'card-display-img');
-  // if (!card.imageUrl) {
-  //   $img.setAttribute('src', './images/placeholder.jpg');
-  // } else {
-  //   $img.setAttribute('src', card.imageUrl);
-  // }
+  $img.setAttribute('class', 'card-display-img');
+  if (!list.pic) {
+    $img.setAttribute('src', './images/placeholder.jpg');
+  } else {
+    $img.setAttribute('src', list.pic);
+  }
 
   $h2.setAttribute('class', 'student-display-h2');
   $h2.textContent = list.name;
@@ -48,10 +48,14 @@ function renderList(list) {
   $p3.setAttribute('class', 'p-student-listing');
   $p3.textContent = list.skill;
   $p4.setAttribute('class', 'p-student-listing');
-  $p4.textContent = list.grades;
+  const average = (grades) => grades.reduce((a, b) => a + b) / grades.length;
+  $p4.textContent = list.average;
+  console.log('test:', $p4)
+  console.log('test 2:', average)
+  console.log('test 3:', list.grades)
 
   $li.appendChild($div);
-  // $div.appendChild($img);
+  $div.appendChild($img);
   $div.appendChild($h2);
   $div.appendChild($p);
   $div.appendChild($p2);
