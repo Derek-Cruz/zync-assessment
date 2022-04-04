@@ -8,7 +8,9 @@ function getData() {
     console.log(xhr.status);
     console.log(xhr.response);
     for (let students in xhr.response) {
-      console.log('res:', xhr.response[students])
+      const $test = renderList(xhr.response.students);
+      $userList.append($test);
+      console.log('res:', xhr.response.students)
     }
   });
   xhr.send();
@@ -29,12 +31,12 @@ function renderList(list) {
   $li.setAttribute('class', 'student-display-li');
   $div.setAttribute('class', 'student-display-div');
 
-  $img.setAttribute('class', 'card-display-img');
-  if (!card.imageUrl) {
-    $img.setAttribute('src', './images/placeholder.jpg');
-  } else {
-    $img.setAttribute('src', card.imageUrl);
-  }
+  // $img.setAttribute('class', 'card-display-img');
+  // if (!card.imageUrl) {
+  //   $img.setAttribute('src', './images/placeholder.jpg');
+  // } else {
+  //   $img.setAttribute('src', card.imageUrl);
+  // }
 
   $h2.setAttribute('class', 'student-display-h2');
   $h2.textContent = list.name;
@@ -49,7 +51,7 @@ function renderList(list) {
   $p4.textContent = list.grades;
 
   $li.appendChild($div);
-  $div.appendChild($img);
+  // $div.appendChild($img);
   $div.appendChild($h2);
   $div.appendChild($p);
   $div.appendChild($p2);
