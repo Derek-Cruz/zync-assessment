@@ -21,6 +21,7 @@ getData();
 function renderList(list) {
   const $li = document.createElement('li');
   const $div = document.createElement('div');
+  const $div2 = document.createElement('div');
   const $h2 = document.createElement('h2');
   const $p = document.createElement('p');
   const $p2 = document.createElement('p');
@@ -39,28 +40,29 @@ function renderList(list) {
   }
 
   $h2.setAttribute('class', 'student-display-h2');
-  $h2.textContent = list.name;
+  $h2.textContent = `${list.firstName} ${list.lastName}`;
 
   $p.setAttribute('class', 'p-student-listing');
-  $p.textContent = list.email;
+  $p.textContent = `Email: ${list.email}`;
   $p2.setAttribute('class', 'p-student-listing');
-  $p2.textContent = list.company;
+  $p2.textContent = `Company: ${list.company}`;
   $p3.setAttribute('class', 'p-student-listing');
-  $p3.textContent = list.skill;
+  $p3.textContent = `Skill: ${list.skill}`;
   $p4.setAttribute('class', 'p-student-listing');
   const average = list.grades.reduce((a, b) => a + b) / list.grades.length;
 
-  $p4.textContent = average;
+  $p4.textContent = `Average: ${average}`;
   console.log('test:', average)
   console.log('test 2:', list.grades.length)
 
   $li.appendChild($div);
   $div.appendChild($img);
-  $div.appendChild($h2);
-  $div.appendChild($p);
-  $div.appendChild($p2);
-  $div.appendChild($p3);
-  $div.appendChild($p4);
+  $div.appendChild($div2);
+  $div2.appendChild($h2);
+  $div2.appendChild($p);
+  $div2.appendChild($p2);
+  $div2.appendChild($p3);
+  $div2.appendChild($p4);
 
   return $li;
 }

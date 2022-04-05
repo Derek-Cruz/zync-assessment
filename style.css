@@ -1,0 +1,21 @@
+.card-display-img {
+  width: 130px;
+  height: 130px;
+  border: 1px solid #555;
+  border-radius: 66px;
+}
+
+.student-display-div {
+  display: flex;
+  align-items: center;
+}
+
+.p-student-listing {
+  margin: 0;
+  padding-bottom: 5px;
+  padding-left: 60px;
+}
+
+.student-display-h2 {
+  padding-left: 45px;
+}
