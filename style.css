@@ -8,6 +8,22 @@ ul {
   list-style-type: none;
 }
 
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.search-bar {
+  color: aqua
+}
+
+.input-search-style {
+  border-bottom: 1px solid rgb(207, 207, 207);
+}
+
 .card-display-img {
   width: 130px;
   height: 130px;
