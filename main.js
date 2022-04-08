@@ -1,4 +1,5 @@
 const $userList = document.querySelector('#user-list');
+const $searchBar = document.querySelector('#searchBar');
 
 function getData() {
   const xhr = new XMLHttpRequest();
@@ -10,7 +11,6 @@ function getData() {
     for (var i = 0; i < xhr.response.students.length; i++) {
       const $test = renderList(xhr.response.students[i]);
       $userList.appendChild($test);
-      // console.log('res:', xhr.response.students[i])
     }
   });
   xhr.send();
@@ -52,8 +52,6 @@ function renderList(list) {
   const average = list.grades.reduce((a, b) => a + b) / list.grades.length;
 
   $p4.textContent = `Average: ${average}`;
-  console.log('test:', average)
-  console.log('test 2:', list.grades.length)
 
   $li.appendChild($div);
   $div.appendChild($img);
@@ -65,4 +63,32 @@ function renderList(list) {
   $div2.appendChild($p4);
 
   return $li;
+}
+
+$searchBar.addEventListener('keydown', function (event) {
+  if (event.keyCode === 13) {
+    if (!$searchBar.value || $searchBar.value === ' ') {
+      return;
+    }
+    search();
+  }
+
+  if ($searchBar.value) {
+    $searchBar.value.toLowerCase();
+  }
+});
+
+function search(event) {
+  const xhr = new XMLHttpRequest();
+  const url = 'https://api.hatchways.io/assessment/students?firstName=' + $searchBar.value;
+  xhr.open('GET', url);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    for (var i = 0; i < xhr.response.students.length; i++) {
+      var $cards = renderList(xhr.response.students[i]);
+      $userList.appendChild($cards);
+    }
+  });
+  xhr.send();
+  $searchBar.value = '';
 }
