@@ -23,6 +23,7 @@ function renderList(list) {
   const $div = document.createElement('div');
   const $div2 = document.createElement('div');
   const $div3 = document.createElement('div');
+  const $div4 = document.createElement('div');
   const $h2 = document.createElement('h2');
   const $p = document.createElement('p');
   const $p2 = document.createElement('p');
@@ -61,6 +62,17 @@ function renderList(list) {
 
   $p4.textContent = `Average: ${average}`;
 
+  $div4.setAttribute('class', 'hidden view')
+  const testingGrade = list.grades.map(test => `test: ${test}%`)
+
+  $userList.addEventListener('click', function (event) {
+    if (event.target.tagName === 'I') {
+      console.log('CLICKED')
+      $div4.classList.remove('hidden');
+      return;
+    }
+  });
+
   $li.appendChild($div);
   $div.appendChild($img);
   $div.appendChild($div2);
@@ -71,6 +83,8 @@ function renderList(list) {
   $div2.appendChild($p2);
   $div2.appendChild($p3);
   $div2.appendChild($p4);
+  $div2.appendChild($div4)
+
 
   return $li;
 }

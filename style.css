@@ -9,6 +9,10 @@ ul {
   list-style-type: none;
 }
 
+.hidden {
+  display: none;
+}
+
 ::placeholder {
   color: rgb(207, 207, 207);
 }
