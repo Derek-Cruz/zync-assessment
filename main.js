@@ -22,6 +22,7 @@ function renderList(list) {
   const $li = document.createElement('li');
   const $div = document.createElement('div');
   const $div2 = document.createElement('div');
+  const $div3 = document.createElement('div');
   const $h2 = document.createElement('h2');
   const $p = document.createElement('p');
   const $p2 = document.createElement('p');
@@ -39,8 +40,15 @@ function renderList(list) {
     $img.setAttribute('src', list.pic);
   }
 
+  $div2.setAttribute('class', 'column-full');
+  $div3.setAttribute('class', 'column-full header-icon-placement');
+
   $h2.setAttribute('class', 'student-display-h2');
   $h2.textContent = `${list.firstName} ${list.lastName}`;
+
+  const $editIcon = document.createElement('i');
+  $editIcon.setAttribute('data-student-id', list.id);
+  $editIcon.setAttribute('class', 'fa-solid fa-plus fa-plus-styling');
 
   $p.setAttribute('class', 'p-student-listing');
   $p.textContent = `Email: ${list.email}`;
@@ -56,7 +64,9 @@ function renderList(list) {
   $li.appendChild($div);
   $div.appendChild($img);
   $div.appendChild($div2);
-  $div2.appendChild($h2);
+  $div2.appendChild($div3);
+  $div3.appendChild($h2)
+  $div3.appendChild($editIcon)
   $div2.appendChild($p);
   $div2.appendChild($p2);
   $div2.appendChild($p3);
@@ -80,7 +90,7 @@ $searchBar.addEventListener('keydown', function (event) {
 
 function search(event) {
   const xhr = new XMLHttpRequest();
-  const url = 'https://api.hatchways.io/assessment/students?firstName=' + $searchBar.value;
+  const url = 'https://api.hatchways.io/assessment/students' + $searchBar.value;
   xhr.open('GET', url);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {

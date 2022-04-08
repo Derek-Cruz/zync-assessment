@@ -23,7 +23,7 @@ ul {
 
 .search-bar {
   font-size: 1.2rem;
-  padding-bottom: 8px;
+  line-height: 35px;
   border: none;
   background-color: transparent;
   resize: none;
@@ -65,4 +65,16 @@ ul {
 
 .student-display-li {
   border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.header-icon-placement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.fa-plus-styling {
+  font-size: 1.7rem;
 }
